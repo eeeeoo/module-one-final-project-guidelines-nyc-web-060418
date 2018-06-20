@@ -16,7 +16,7 @@ class Teacher < ActiveRecord::Base
   end
 
   def delete_announcement(title)
-    Announcement.where(title:title).destroy_all
+    Announcement.where(title: title).destroy_all
   end
 
   def add_assignment(course, title, entry)
@@ -24,7 +24,7 @@ class Teacher < ActiveRecord::Base
   end
 
   def delete_assignment(title)
-    Assignment.where(title:title).destroy_all
+    Assignment.where(title: title).destroy_all
   end
 
   def add_note(course, title, entry)

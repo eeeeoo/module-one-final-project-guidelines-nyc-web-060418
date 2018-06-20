@@ -6,25 +6,53 @@ class Course < ActiveRecord::Base
   has_many :assignments
 
   def announcements
-    result = instance_announcements.each do |announce|
-      puts announce.title + "\n   " + announce.entry + "\n"
+    instance_announcements.each do |announce|
+      puts "+ " + announce.title
+      puts "    " + announce.entry + "\n"
     end
-    # puts result
   end
 
+#   def add_announcement(title, entry)
+#     Announcement.create(self, title: title, entry: entry)
+#   end
+#
+#   def delete_announcement
+#     instance_announcements.where(title: title).destroy_all
+#   end
+#
+# # *******************************
   def assignments
-    result = instance_assignments.each do |assign|
-      puts announce.title + "\n   " + announce.entry + "\n"
+    instance_assignments.each do |assign|
+      puts "+ " + assign.title
+      puts "    " + assign.entry + "\n"
     end
-    # puts result
   end
-
+#
+#   def add_assignment(title, entry)
+#     Assignment.create(title: title, entry: entry)
+#   end
+#
+#   def delete_assignment
+#     instance_assignments.where(title: title).destroy_all
+#   end
+#
+#   # *******************************
   def notes
-    result = instance_notes.each do |note|
-      puts announce.title + "\n   " + announce.entry + "\n"
+    instance_notes.each do |note|
+      puts "+ " + note.title
+      puts "    " + note.entry + "\n"
     end
-    # puts result
   end
+#
+#   def add_note(:title, :entry)
+#
+#   end
+#
+#   def delete_note(title)
+#     instance_notes.where(title: title).destroy_all
+#   end
+
+
 
 
   private
