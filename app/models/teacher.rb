@@ -5,7 +5,7 @@ class Teacher < ActiveRecord::Base
   has_many :assignments, through: :courses
 
 
-  def view_my_courses
+  def courses
     instance_of_teacher.map do |course|
       course.name
     end

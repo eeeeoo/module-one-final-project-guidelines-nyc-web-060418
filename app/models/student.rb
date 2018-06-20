@@ -1,9 +1,9 @@
 class Student < ActiveRecord::Base
   has_many :courses
 
-  def my_courses_and_teachers
-    instance_of_student.map do |course|
-      "#{course.name} -- #{course.teacher.name}"
+  def courses_and_teachers
+    instance_of_student.each do |course|
+      puts "#{course.name} -- #{course.teacher.name}"
     end
   end
 

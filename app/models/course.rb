@@ -6,24 +6,24 @@ class Course < ActiveRecord::Base
   has_many :assignments
 
   def announcements
-    instance_announcements.each do |announce|
-      puts announce.title
-      puts announce.entry + "\n"
+    result = instance_announcements.each do |announce|
+      puts announce.title + "\n   " + announce.entry + "\n"
     end
+    # puts result
   end
 
   def assignments
-    instance_assignments.each do |assign|
-      puts assign.title
-      puts assign.entry + "\n"
+    result = instance_assignments.each do |assign|
+      puts announce.title + "\n   " + announce.entry + "\n"
     end
+    # puts result
   end
 
   def notes
-    instance_notes.each do |note|
-      puts note.title
-      puts note.entry + "\n"
+    result = instance_notes.each do |note|
+      puts announce.title + "\n   " + announce.entry + "\n"
     end
+    # puts result
   end
 
 
