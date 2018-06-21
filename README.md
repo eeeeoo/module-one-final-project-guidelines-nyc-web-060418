@@ -17,7 +17,7 @@ Ironschool believes in digital tools that improve resource management and commun
 ## License
 MIT License
 
-Copyright (c) [2018] [Jee Yoon Lee, Alexandra Hernandez]
+Copyright (c) [2018] [Alexandra Hernandez, Jee Yoon Lee]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
