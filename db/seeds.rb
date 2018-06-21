@@ -1,14 +1,14 @@
 
-tashawn = Teacher.create(name: "Tashawn", email: "tashawn@ironschool.com")
-graham = Teacher.create(name: "Graham", email: "graham@ironschool.com")
-andrew = Teacher.create(name: "Andrew", email: "andrew@ironschool.com")
-zach = Teacher.create(name: "Zach", email: "zach@ironschool.com")
+tashawn = Teacher.create(name: "Tashawn", email: "tashawn@ironschool.com", password: "stylingAlways")
+graham = Teacher.create(name: "Graham", email: "graham@ironschool.com", password: "2beHappy")
+andrew = Teacher.create(name: "Andrew", email: "andrew@ironschool.com", password: "xpressThyself")
+zach = Teacher.create(name: "Zach", email: "zach@ironschool.com", password: "code4Ever")
 
 
-jee = Student.create(name: "Jee", email: "jee@ironschool.com")
-alex = Student.create(name: "Alex", email: "alex@ironschool.com")
-brad = Student.create(name: "Brad", email: "brad@ironschool.com")
-isaac = Student.create(name: "Isaac", email: "isaac@ironschool.com")
+jee = Student.create(name: "Jee", email: "jee@ironschool.com", password: "matchaLatte")
+alex = Student.create(name: "Alex", email: "alex@ironschool.com", password: "dogsRgr8")
+brad = Student.create(name: "Brad", email: "brad@ironschool.com", password: "loveCalculus")
+isaac = Student.create(name: "Isaac", email: "isaac@ironschool.com", password: "dope4life")
 
 
 calc1 = Course.create(name: "Calculus I", teacher: andrew, student: brad)
