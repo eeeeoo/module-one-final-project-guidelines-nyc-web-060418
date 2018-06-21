@@ -12,45 +12,42 @@ class Course < ActiveRecord::Base
     end
   end
 
-#   def add_announcement(title, entry)
-#     Announcement.create(self, title: title, entry: entry)
-#   end
-#
-#   def delete_announcement
-#     instance_announcements.where(title: title).destroy_all
-#   end
-#
-# # *******************************
+  def announcement_titles
+    instance_announcements.map do |announce|
+      announce.title
+    end
+  end
+
+
+
   def assignments
     instance_assignments.each do |assign|
       puts "+ " + assign.title
       puts "    " + assign.entry + "\n"
     end
   end
-#
-#   def add_assignment(title, entry)
-#     Assignment.create(title: title, entry: entry)
-#   end
-#
-#   def delete_assignment
-#     instance_assignments.where(title: title).destroy_all
-#   end
-#
-#   # *******************************
+
+  def assignment_titles
+    instance_assignments.map do |assign|
+      assign.title
+    end
+  end
+
+
+
   def notes
     instance_notes.each do |note|
       puts "+ " + note.title
       puts "    " + note.entry + "\n"
     end
   end
-#
-#   def add_note(:title, :entry)
-#
-#   end
-#
-#   def delete_note(title)
-#     instance_notes.where(title: title).destroy_all
-#   end
+
+  def note_titles
+    instance_notes.map do |note|
+      note.title
+    end
+  end
+
 
 
 
