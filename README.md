@@ -7,8 +7,8 @@ Ironschool provides an education technology platform encouraging operations, cla
 1. Fork and clone this repository.
 2. See the user information provided in db/seeds.rb
 3. Use the information in the seeds.rb file to input user emails when logging into this app or you can add more information to the file. 
-4. Inside your terminal, enter bundle install. 
-5. Inside your terminal, run ruby bin/run.rb
+4. Inside your terminal, enter 'bundle install' 
+5. Inside your terminal, run 'ruby bin/run.rb'
 
 ### Contributors Guide
 
