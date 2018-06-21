@@ -35,9 +35,9 @@ def welcome
   $user_email = $prompt.ask('Please enter your school email?') do |q|
     q.validate(/\A\w+@\w+\.\w+\Z/)
     q.messages[:valid?] = 'Invalid email address'
-
   end
 
+  # Make sure email exists
   while !(Teacher.teacher_emails.include?($user_email)) && !(Student.student_emails.include?($user_email))
     puts "Please, contact Iron School's administration at administration@ironschool.com."
     $user_email = $prompt.ask('Or you can try again: ') do |q|
@@ -48,12 +48,23 @@ def welcome
 
   if Student.student_emails.include?($user_email)
     user = "Student"
+    user_obj = Student.all.find { |student| student.email == $user_email }
   else
     user = "Teacher"
+    user_obj = Teacher.all.find { |teacher| teacher.email == $user_email }
+  end
+
+  user_password = $prompt.mask("Please, enter your password:")
+
+  # Make sure password is correct
+  while user_password != user_obj.password
+    puts "Wrong password. Contact Iron School's administration at administration@ironschool.com."
+    user_password = $prompt.mask('Or try again:')
   end
 
   $user_type = $prompt.select("Choose user type?", %w(Student Teacher))
 
+  # Make sure user type is correct
   while user != $user_type
     $user_type = $prompt.select("Wrong user type. Please, try again: ", %w(Student Teacher))
   end
