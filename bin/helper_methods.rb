@@ -35,12 +35,32 @@ def welcome
   $user_email = $prompt.ask('Please enter your school email?') do |q|
     q.validate(/\A\w+@\w+\.\w+\Z/)
     q.messages[:valid?] = 'Invalid email address'
+
+  end
+
+  while !(Teacher.teacher_emails.include?($user_email)) && !(Student.student_emails.include?($user_email))
+    puts "Please, contact Iron School's administration at administration@ironschool.com."
+    $user_email = $prompt.ask('Or you can try again: ') do |q|
+      q.validate(/\A\w+@\w+\.\w+\Z/)
+      q.messages[:valid?] = 'Invalid email address'
+    end
+  end
+
+  if Student.student_emails.include?($user_email)
+    user = "Student"
+  else
+    user = "Teacher"
   end
 
   $user_type = $prompt.select("Choose user type?", %w(Student Teacher))
 
+  while user != $user_type
+    $user_type = $prompt.select("Wrong user type. Please, try again: ", %w(Student Teacher))
+  end
+
   course_list
 end
+
 
 def exit_app
   puts "Successful logout."
@@ -77,9 +97,8 @@ def course_list
 
     exit_app if course == "Logout"
 
-    $course_obj = Course.all.find {|course_inst| course_inst.name == course.split[0]}
+    $course_obj = Course.all.find {|course_inst| course_inst.name == course.split(" -- ")[0]}
   end
-
   select_material
 end
 
@@ -169,6 +188,7 @@ def announcement
 
 end
 
+
 def show_announcements
   puts "Annoucements:"
   $course_obj.announcements
@@ -182,6 +202,7 @@ def show_announcements
     end
   end
 end
+
 
 def add_announcement
   puts "You will be prompted to enter a title, then a description."
@@ -204,6 +225,7 @@ def delete_announcement
 end
 
 ###############
+
 
 def note
   note_title = <<-TITLE
@@ -238,6 +260,8 @@ def note
 
 end
 
+
+
 def show_notes
   puts "Notes"
   $course_obj.notes
@@ -251,6 +275,8 @@ def show_notes
     end
   end
 end
+
+
 
 def add_note
   puts "You will be prompted to enter a title, then a description."
@@ -274,6 +300,7 @@ end
 
 ##########
 
+
 def assignment
 
   assignment_title = <<-TITLE
@@ -289,13 +316,13 @@ def assignment
     puts assignment_title
     to_do = $prompt.select("What do you want to do with your assignments?", ["View assignments", "Add an assignment", "Delete an assignment", "Go back", "Logout"])
 
-    if to_do == "View announcements"
+    if to_do == "View assignments"
       show_assignments
 
-    elsif to_do == "Add an announcement"
+    elsif to_do == "Add an assignment"
       add_assignment
 
-    elsif to_do == "Delete an announcement"
+    elsif to_do == "Delete an assignment"
       delete_assignment
 
     elsif to_do == "Go back"
@@ -308,6 +335,7 @@ def assignment
 
 end
 
+
 def show_assignments
   puts "Assignments:"
   $course_obj.assignments
@@ -317,10 +345,12 @@ def show_assignments
     if $user_type == "Student"
       select_material
     else
-      announcement
+      assignment
     end
   end
 end
+
+
 
 def add_assignment
   puts "You will be prompted to enter a title, then a description."

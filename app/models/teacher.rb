@@ -4,6 +4,11 @@ class Teacher < ActiveRecord::Base
   has_many :notes, through: :courses
   has_many :assignments, through: :courses
 
+  def self.teacher_emails
+    Teacher.all.map do |teacher|
+      teacher.email
+    end
+  end
 
   def courses
     instance_of_teacher.map do |course|
